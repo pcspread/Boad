@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+.books-section {}
+
+.books-top {
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #EEE;
+    border-bottom: 1px solid #888;
+}
+
+.books-title {
+    color: #888;
+    font-size: 32px;
+}
+
+.books-search {}
+
+.books-search__input {
+    width: 80%;
+    border: 2px solid #888;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+
+.books-search__img {
+    fill: #888;
+    font-size: 20px;
+    transform: translateY(6px);
+}
+
+.books-main {}
+
+.books-item {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 15px;
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.book-title {
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.book-genre {
+    display: inline-block;
+    margin-right: 15px;
+    width: 80px;
+    background-color: #CCC;
+    border-radius: 45px;
+    padding: 5px 15px;
+    text-align: center;
+}
+
+.book-author {
+    display: inline-block;
+    margin-right: 15px;
+    width: 120px;
+    background-color: #CCC;
+    border-radius: 45px;
+    padding: 5px 15px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.book-content {
+    margin-right: 15px;
+}
+
+.book-button {
+    display: block;
+    width: 130px;
+    height: 32px;
+    box-shadow: 0 0 1px 2px #60CCAA;
+    background-color: #60CCAA;
+    color: #FFF;
+    border: none;
+    border-radius: 3px;
+}
+
+.book-button:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+@media screen and (max-width: 590px) {
+    .books-item {
+        display: block;
+    }
+
+    .book-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .book-genre {
+        background-color: #CCC;
+        border-radius: 45px;
+        padding: 5px 15px;
+        margin-bottom: 5px;
+    }
+
+    .book-author {
+        margin-bottom: 15px;
+    }
+
+    .book-content {
+        margin-bottom: 15px;
+    }
+
+    .book-button {
+        display: block;
+        width: 130px;
+        height: 32px;
+        box-shadow: 0 0 1px 2px #60CCAA;
+        background-color: #60CCAA;
+        color: #FFF;
+        border: none;
+        border-radius: 3px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .books-top {
+        display: block;
+    }
+
+    .books-search {
+        margin: 15px 0 0;
+    }
+}
