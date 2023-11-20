@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.verify-section {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 200px 0;
+}
+
+.verify-title__text {
+    font-size: 28px;
+    text-align: center;
+    padding-bottom: 32px;
+}
+
+.verify-click {
+    display: block;
+    margin: 32px 0;
+    text-decoration: none;
+    color: #2C9E6A;
+    text-align: center;
+}
+
+.verify-click:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 3px;
+}

@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+.header {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    background-color: #25A31D;
+}
+
+.header-icon__text {
+    text-decoration: none;
+    color: #FFF;
+    font-size: 20px;
+}
+
+.header-icon__text:hover {
+    opacity: .7;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #FFF;
+    margin-left: 24px;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 3px;
+}
+
+.nav-button {
+    margin-left: 24px;
+    border: none;
+    background-color: #25A31D;
+    color: #FFF;
+}
+
+.nav-button:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.toggle {
+    display: flex;
+}
+
+/* =================================================================
+burger
+================================================================= */
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 42px;
+    height: 28px;
+    z-index: 10;
+}
+
+.burger-line {
+    background-color: #FFF;
+    width: 100%;
+    height: 3px;
+    transition: all 3s forward ease-in-out;
+}
+
+.burger-line.rotate.first {
+    transform: rotate(-315deg) translate(5px, 13px);
+}
+
+.burger-line.rotate.second {
+    display: none;
+}
+
+.burger-line.rotate.third {
+    transform: rotate(-45deg) translate(5px, -13px);
+}
+
+.burger-position {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+}
+
+/* =================================================================
+mask
+================================================================= */
+.mask {
+    display: none;
+}
+
+/* =================================================================
+main
+================================================================= */
+.main {
+    background-color: #D3E0DC;
+    min-height: 90vh;
+}
+
+/* =================================================================
+message
+================================================================= */
+.message {
+    position: fixed;
+    top: 10vh;
+    right: 0;
+    padding: 5px 32px;
+    background-color: #55FF55;
+    color: #25A31D;
+    z-index: 5;
+}
+
+/* =================================================================
+メディアクエリ
+================================================================= */
+@media screen and (max-width: 580px) {
+    .burger {
+        display: flex;
+    }
+
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 80px 15px 0 0;
+        z-index: 5;
+        background-color: #25A31D;
+    }
+
+    .nav-link {
+        display: block;
+        margin-bottom: 24px;
+    }
+}

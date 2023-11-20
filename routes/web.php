@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Controller読込
+use App\Http\Controllers\BookController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// view表示：top
+Route::get('/', [BookController::class,'indexHome'])->name('home');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/book', [BookController::class, 'indexBooks']);
 });
