@@ -16,18 +16,25 @@
     @yield('js')
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="top">
         <div class="header-icon">
             <a class="header-icon__text" href="/">Boad</a>
         </div>
 
         <nav class="header-nav">
             <ul class="nav-list">
+                @if (Auth::check())
                 <li class="nav-item">
-                    <a class="nav-link" href="register">新規登録</a>
+                    <a class="nav-link" href="/book">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login">ログイン</a>
+                    <a class="nav-link" href="/author">著者リスト</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/genre">ジャンルリスト</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/book/add">図書追加</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="favorite">お気に入り</a>
@@ -38,6 +45,14 @@
                         <button class="nav-button">ログアウト</button>
                     </form>
                 </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="register">新規登録</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login">ログイン</a>
+                </li>
+                @endif
             </ul>
         </nav>
         
@@ -60,6 +75,10 @@
                 {{ session('message') }}
             </div>
         @endif
+
+        <div class="upper">
+            <a class="upper-click" href="#top"><</a>
+        </div>
     </aside>
 </body>
 </html>
