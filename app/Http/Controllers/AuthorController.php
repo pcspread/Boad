@@ -16,4 +16,15 @@ class AuthorController extends Controller
     {
         return view('author.authors');
     }
+
+    /**
+     * view表示
+     * 著者編集ページ
+     * @param int $author_id
+     * @return view
+     */
+    public function editAuthor($author_id)
+    {
+        return view('author.edit_author');
+    }
 }

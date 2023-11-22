@@ -23,8 +23,10 @@
         <div class="authors-item">
             <p class="author-name">キャベツ</p>
             <div class="author-buttons">
-                <a class="author-click edit" href="">編集</a>
-                <a class="author-click delete" href="">削除</a>
+                <a class="author-click edit" href="author/1">編集</a>
+                <form class="author-click__form" action="">
+                    <button class="author-click delete" href="">削除</button>
+                </form>
             </div>
         </div>
         @endfor

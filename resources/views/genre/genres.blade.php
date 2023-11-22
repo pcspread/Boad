@@ -23,8 +23,10 @@
         <div class="genres-item">
             <p class="genre-name">キャベツ</p>
             <div class="genre-buttons">
-                <a class="genre-click edit" href="">編集</a>
-                <a class="genre-click delete" href="">削除</a>
+                <a class="genre-click edit" href="/genre/1">編集</a>
+                <form class="genre-click__form" action="">
+                    <button class="genre-click delete">削除</button>
+                </form>
             </div>
         </div>
         @endfor
