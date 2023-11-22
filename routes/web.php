@@ -25,12 +25,27 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // view表示：図書一覧ページ
     Route::get('/book', [BookController::class, 'indexBooks']);
 
+    // view表示：図書詳細ページ
+    Route::get('/book/detail/{book_id}', [BookController::class, 'showBook']);
+
     // view表示：図書追加ページ
     Route::get('/book/add', [BookController::class, 'createBook']);
+
+    // view表示：図書編集ページ
+    Route::get('/book/edit/{book_id}', [BookController::class, 'editBook']);
+    
+    // view表示：図書評価ページ
+    Route::get('/book/rate/{book_id}', [BookController::class, 'editRateBook']);
     
     // view表示：著者一覧ページ
     Route::get('/author', [AuthorController::class, 'indexAuthors']);
     
+    // view表示：著者編集ページ
+    Route::get('/author/{author_id}', [AuthorController::class, 'editAuthor']);
+
     // view表示：ジャンル一覧ページ
     Route::get('/genre', [GenreController::class, 'indexGenres']);
+
+    // view表示：ジャンル編集ページ
+    Route::get('/genre/{genre_id}', [GenreController::class, 'editGenre']);
 });

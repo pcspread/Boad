@@ -24,7 +24,7 @@
             <p class="book-genre">冒険</p>
             <p class="book-author">新井白石作</p>
             <p class="book-content">ケンタが冒険に出るストーリーです。途中で様々な敵と出会う中で成長していく姿をご覧ください。</p>
-            <button class="book-button">詳細</button>
+            <a class="book-button" href="/book/detail/1">詳細</a>
         </div>
         @endfor
     </div>

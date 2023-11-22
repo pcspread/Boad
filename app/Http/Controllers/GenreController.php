@@ -16,4 +16,15 @@ class GenreController extends Controller
     {
         return view('genre.genres');
     }
+
+    /**
+     * view表示
+     * ジャンル編集ページ
+     * @param int $genre_id
+     * @return view
+     */
+    public function editGenre($genre_id)
+    {
+        return view('genre.edit_genre');
+    }
 }

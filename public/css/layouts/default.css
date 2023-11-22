@@ -71,6 +71,11 @@ burger
     z-index: 10;
 }
 
+.burger:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
 .burger-line {
     background-color: #FFF;
     width: 100%;
