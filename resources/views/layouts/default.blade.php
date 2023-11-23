@@ -28,16 +28,16 @@
                     <a class="nav-link" href="/book">HOME</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/book/favorite">お気に入り</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/book/rank">ランキング</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/author">著者リスト</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/genre">ジャンルリスト</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/book/add">図書追加</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="favorite">お気に入り</a>
                 </li>
                 <li class="nav-item">
                     <form class="nav-form" action="/logout" method="POST">
