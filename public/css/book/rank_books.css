@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-.favorite-section {}
+.rank-section {}
 
-.favorite-top {
+.rank-top {
     position: sticky;
     top: 0;
     right: 0;
@@ -12,14 +12,14 @@
     border-bottom: 1px solid #888;
 }
 
-.favorite-title {
+.rank-title {
     color: #888;
     font-size: 32px;
 }
 
-.favorite-main {}
+.rank-main {}
 
-.favorite-item {
+.rank-item {
     display: flex;
     justify-content: left;
     align-items: center;
@@ -79,7 +79,7 @@
 }
 
 @media screen and (max-width: 590px) {
-    .favorite-item {
+    .rank-item {
         display: block;
     }
 
@@ -116,11 +116,11 @@
 }
 
 @media screen and (max-width: 480px) {
-    .favorite-top {
+    .rank-top {
         display: block;
     }
 
-    .favorite-search {
+    .rank-search {
         margin: 15px 0 0;
     }
 }
