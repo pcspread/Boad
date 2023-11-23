@@ -30,6 +30,17 @@ class BookController extends Controller
 
     /**
      * view表示
+     * ランキング一覧ページ
+     * @param void
+     * @return view
+     */
+    public function indexRankBooks()
+    {
+        return view('book.rank_books');
+    }
+
+    /**
+     * view表示
      * 図書詳細ページ
      * @param int $book_id
      * @return view

@@ -22,13 +22,10 @@
     font-size: 24px;
 }
 
-.rate-item__star-image:hover {
-    color: #FFFF55;
-}
-
 .rate-item__name {
     display: block;
     padding-bottom: 5px;
+    margin-top: 15px;
 }
 
 .rate-item__textarea {

@@ -63,6 +63,7 @@
             </div>
             
             <button class="add-button">追加する</button>
+            <a class="add-button back" href="/book">戻る</a>
         </form>
     </div>
 </div>
