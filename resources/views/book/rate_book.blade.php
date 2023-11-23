@@ -27,6 +27,11 @@
                     <input class="rate-item__star star4" id="star4" type="radio" name="star" value="star4">
                 <label for="star5" class="rate-item__star-image image5">★</label>
                     <input class="rate-item__star star5" id="star5" type="radio" name="star" value="star5">
+                <p class="rate-item__error">
+                @error('comment')
+                    {{ $errors->first('comment') }}
+                @enderror
+                </p>
             </div>
             <div class="rate-item">
                 <lable class="rate-item__name" for="comment">コメント</lable>

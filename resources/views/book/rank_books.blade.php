@@ -9,20 +9,34 @@
 @endsection
 
 @section('content')
-<div class="favorite-section">
-    <div class="favorite-top">
-        <h1 class="favorite-title">お気に入りリスト</h1>
+<div class="rank-section">
+    <div class="rank-top">
+        <h1 class="rank-title">ランキングリスト</h1>
     </div>
-    <div class="favorite-main">
-        @for ($i = 0; $i < 10; $i++)
-        <div class="favorite-item">
-            <p class="book-title">ケンタの冒険</p>
-            <p class="book-genre">冒険</p>
-            <p class="book-author">新井白石作</p>
-            <p class="book-content">ケンタが冒険に出るストーリーです。途中で様々な敵と出会う中で成長していく姿をご覧ください。</p>
-            <a class="book-button" href="/book/detail/1">詳細</a>
+    <div class="rank-main">
+        <div class="rank-main__block">
+            1位<h2 class="rank-main__block-title"></h2>
+            @for ($i = 0; $i < 3; $i++)
+            <div class="rank-item">
+                <p class="book-title">ケンタの冒険</p>
+                <p class="book-genre">冒険</p>
+                <p class="book-author">新井白石作</p>
+                <a class="book-button" href="/book/detail/1"></a>
+            </div>
+            @endfor
         </div>
-        @endfor
+        <div class="rank-main__block">
+            1位
+        </div>
+        <div class="rank-main__block">
+            1位
+        </div>
+        <div class="rank-main__block">
+            1位
+        </div>
+        <div class="rank-main__block">
+            1位
+        </div>
     </div>
 </div>
 @endsection
