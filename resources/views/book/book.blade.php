@@ -26,11 +26,14 @@
             <p class="main-genre">冒険</p>
             <p class="main-author">新井白石作</p>
             <div class="main-favorite">
-                <form class="main-favorite__form" action="">
+                <form class="main-favorite__form" action="/book/detail/{book_id}" method="POST">
+                @csrf
                     <button class="main-favorite__button">♥</button>
                 </form>
-                <form class="main-favorite__form" action="">
-                    <button class="main-favorite__button on"></button>
+                <form class="main-favorite__form" action="/book/detail/{book_id}" method="POST">
+                @method('DELETE')
+                @csrf
+                    <button class="main-favorite__button on">♥</button>
                 </form>
             </div>
         </div>
