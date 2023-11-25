@@ -30,6 +30,17 @@ class BookController extends Controller
 
     /**
      * view表示
+     * お気に入り一覧ページ
+     * @param void
+     * @return view
+     */
+    public function indexFavoriteBooks()
+    {
+        return view('book.favorite_books');
+    }
+
+    /**
+     * view表示
      * ランキング一覧ページ
      * @param void
      * @return view

@@ -26,7 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/book', [BookController::class, 'indexBooks']);
 
     // view表示：お気に入り一覧ページ
-    Route::get('/book/favorite', [BookController::class, 'indexRankBooks']);
+    Route::get('/book/favorite', [BookController::class, 'indexFavoriteBooks']);
 
     // view表示：ランキングページ
     Route::get('//book/rank', [BookController::class, 'indexRankBooks']);
