@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-.authors-section {}
-
 .authors-top {
     position: sticky;
     top: 0;
@@ -19,8 +17,6 @@
     color: #888;
     font-size: 32px;
 }
-
-.authors-add__form {}
 
 .authors-add__main {
     display: flex;

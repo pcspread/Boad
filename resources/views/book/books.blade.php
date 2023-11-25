@@ -4,10 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/book/books.css') }}">
 @endsection
 
-@section('js')
-<script src="{{ asset('js/book/books.js') }}" defer></script>
-@endsection
-
 @section('content')
 <div class="books-section">
     <div class="books-top">
