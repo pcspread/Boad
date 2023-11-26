@@ -21,34 +21,39 @@
     </div>
 
     <div class="book-main">
-        <h2 class="main-title">ケンタの冒険</h2>
+        <h2 class="main-title">{{ $book['title'] }}</h2>
         <div class="main__top-block">
-            <p class="main-genre">冒険</p>
-            <p class="main-author">新井白石作</p>
+            <p class="main-genre">{{ $book->genre['name'] }}</p>
+            <p class="main-author">{{ $book->author['name'] }}</p>
             <div class="main-favorite">
-                <form class="main-favorite__form" action="/book/detail/{book_id}" method="POST">
+                @if (empty($favorite))
+                <form class="main-favorite__form" action="/book/detail/{{ $book['id'] }}" method="POST">
                 @csrf
                     <button class="main-favorite__button">♥</button>
                 </form>
-                <form class="main-favorite__form" action="/book/detail/{book_id}" method="POST">
+                @else
+                <form class="main-favorite__form" action="/book/detail/{{ $book['id'] }}" method="POST">
                 @method('DELETE')
                 @csrf
                     <button class="main-favorite__button on">♥</button>
                 </form>
+                @endif
             </div>
         </div>
         <div class="main-content">
             <label class="main-content__title" for="">内容</label>
-            <p class="main-content__text">ケンタが冒険に出るストーリーです。途中で様々な敵と出会う中で成長していく姿をご覧ください。</p>
+            <p class="main-content__text">{{ $book['content'] }}</p>
         </div>
+        @if ($book['comment'])
         <div class="main-rate">
             <label class="main-rate__title" for="">評価</label>
-            <p class="main-rate__instance">★★★★★</p>
-            <p class="main-rate__text">素晴らしい内容で、感動した。</p>
+            <p class="main-rate__instance">{{ $book['rate'] }}</p>
+            <p class="main-rate__text">{{ $book['comment'] }}</p>
         </div>
+        @endif
         <div class="main-memo">
             <label class="main-memo__title" for="">メモ</label>
-            <p class="main-memo__text">32ページまで読破。ケンタが冒険にでるきっかけとなった出来事に感動。今後、どういう風にケンタが成長していくのかとても楽しみ。</p>
+            <p class="main-memo__text">{{ $book['memo'] ?? 'メモがございません' }}</p>
         </div>
     </div>
 </div>

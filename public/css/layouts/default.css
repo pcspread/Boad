@@ -122,14 +122,23 @@ main
 /* =================================================================
 message
 ================================================================= */
-.message {
+.comment {
     position: fixed;
     top: 10vh;
     right: 0;
-    padding: 5px 32px;
-    background-color: #55FF55;
-    color: #25A31D;
     z-index: 5;
+}
+
+.comment-text {
+    padding: 15px 32px;
+    border-radius: 0 0 0 25px;
+    background-color: #55FF55;
+    color: #FFF;
+}
+
+.comment-text.danger {
+    background-color: #FF5555;
+    color: #FFF;
 }
 
 /* =================================================================

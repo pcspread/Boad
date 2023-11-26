@@ -70,11 +70,13 @@
     </main>
 
     <aside class="aside">
-        @if (session('message'))
-            <div class="message">
-                {{ session('message') }}
-            </div>
-        @endif
+        <div class="comment">
+            @if (session('success'))
+            <p class="comment-text success">{{ session('success') }}</p>
+            @elseif (session('danger'))
+            <p class="comment-text danger">{{ session('danger') }}</p>
+            @endif
+        </div>
 
         <div class="upper">
             <a class="upper-click" href="#top"><</a>

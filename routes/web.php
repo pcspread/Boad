@@ -34,6 +34,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // view表示：図書詳細ページ
     Route::get('/book/detail/{book_id}', [BookController::class, 'showBook']);
 
+    // お気に入り追加処理
+    Route::post('/book/detail/{book_id}', [BookController::class, 'addFavorite']);
+
+    // お気に入り解除処理
+    Route::delete('/book/detail/{book_id}', [BookController::class, 'destroyFavorite']);
+
     // view表示：図書追加ページ
     Route::get('/book/add', [BookController::class, 'createBook']);
 
@@ -43,11 +49,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // view表示：図書評価ページ
     Route::get('/book/rate/{book_id}', [BookController::class, 'editRateBook']);
     
+/* ==================================================
+著者
+================================================== */
+
     // view表示：著者一覧ページ
     Route::get('/author', [AuthorController::class, 'indexAuthors']);
     
     // view表示：著者編集ページ
     Route::get('/author/{author_id}', [AuthorController::class, 'editAuthor']);
+
+/* ==================================================
+ジャンル
+================================================== */
 
     // view表示：ジャンル一覧ページ
     Route::get('/genre', [GenreController::class, 'indexGenres']);

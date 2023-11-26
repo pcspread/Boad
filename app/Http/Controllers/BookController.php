@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// Model読込
+use App\Models\Book;
+use App\Models\Favorite;
 
 class BookController extends Controller
 {
@@ -25,7 +28,10 @@ class BookController extends Controller
      */
     public function indexBooks()
     {
-        return view('book.books');
+        // 図書情報の取得
+        $books = Book::all();
+
+        return view('book.books', compact('books'));
     }
 
     /**
@@ -58,7 +64,41 @@ class BookController extends Controller
      */
     public function showBook($book_id)
     {
-        return view('book.book');
+        // 図書詳細データを取得
+        $book = Book::find($book_id);
+
+        // お気に入り情報の取得
+        $favorite = Favorite::where('book_id', $book_id)->first();
+
+        return view('book.book', compact('book', 'favorite'));
+    }
+
+    /**
+     * お気に入り追加処理
+     * @param int $book_id
+     * @return back
+     */
+    public function addFavorite($book_id)
+    {
+        // お気に入り追加処理
+        Favorite::create([
+            'book_id' => $book_id,
+        ]);
+
+        return back()->with('success', 'お気に入りに追加しました');
+    }
+
+    /**
+     * お気に入り解除処理
+     * @param int $book_id
+     * @return back
+     */
+    public function destroyFavorite($book_id)
+    {
+        // お気に入り解除処理
+        Favorite::where('book_id', $book_id)->first()->delete();
+
+        return back()->with('success', 'お気に入りを解除しました');
     }
 
     /**
