@@ -43,11 +43,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // view表示：図書追加ページ
     Route::get('/book/add', [BookController::class, 'createBook']);
 
+    // 図書追加処理
+    Route::post('/book/add', [BookController::class, 'storeBook']);
+
     // view表示：図書編集ページ
     Route::get('/book/edit/{book_id}', [BookController::class, 'editBook']);
+
+    // 図書更新処理
+    Route::post('/book/edit/{book_id}', [BookController::class, 'updateBook']);
     
     // view表示：図書評価ページ
-    Route::get('/book/rate/{book_id}', [BookController::class, 'editRateBook']);
+    Route::get('/book/rate/{book_id}', [BookController::class, 'createRateBook']);
+
+    // 図書評価処理
+    Route::post('/book/rate/{book_id}', [BookController::class, 'storeRateBook']);
+
+    // 図書削除処理
+    Route::get('/book/delete/{book_id}', [BookController::class, 'destroyBook']);
     
 /* ==================================================
 著者
