@@ -14,9 +14,9 @@
         <h1 class="book-title">図書詳細</h1>
         <div class="book-buttons">
             <a class="book-button back" href="/book">戻る</a>
-            <a class="book-button edit" href="/book/edit/1">編集</a>
-            <a class="book-button rate" href="/book/rate/1">評価</a>
-            <a class="book-button delete" href="">削除</a>
+            <a class="book-button edit" href="/book/edit/{{ $book['id'] }}">編集</a>
+            <a class="book-button rate" href="/book/rate/{{ $book['id'] }}">評価</a>
+            <a class="book-button delete" href="/book/delete/{{ $book['id'] }}">削除</a>
         </div>
     </div>
 
@@ -53,7 +53,7 @@
         @endif
         <div class="main-memo">
             <label class="main-memo__title" for="">メモ</label>
-            <p class="main-memo__text">{{ $book['memo'] ?? 'メモがございません' }}</p>
+            <p class="main-memo__text">@if ($book['memo']) {!! nl2br(htmlspecialchars($book['memo'])) !!} @else メモがございません @endif</p>
         </div>
     </div>
 </div>

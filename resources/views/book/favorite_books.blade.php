@@ -10,15 +10,15 @@
         <h1 class="favorite-title">お気に入りリスト</h1>
     </div>
     <div class="favorite-main">
-        @for ($i = 0; $i < 10; $i++)
+        @foreach ($books as $book)
         <div class="favorite-item">
-            <p class="book-title">ケンタの冒険</p>
-            <p class="book-genre">冒険</p>
-            <p class="book-author">新井白石作</p>
-            <p class="book-content">ケンタが冒険に出るストーリーです。途中で様々な敵と出会う中で成長していく姿をご覧ください。</p>
-            <a class="book-button" href="/book/detail/1">詳細</a>
+            <p class="book-title">{{ $book['title'] }}</p>
+            <p class="book-genre">{{ $book->genre['name'] }}</p>
+            <p class="book-author">{{ $book->author['name'] }}</p>
+            <p class="book-content">{{ $book['content'] }}</p>
+            <a class="book-button" href="/book/detail/{{ $book['id'] }}">詳細</a>
         </div>
-        @endfor
+        @endforeach
     </div>
 </div>
 @endsection

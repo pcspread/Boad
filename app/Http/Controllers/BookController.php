@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+// Request読込
 use Illuminate\Http\Request;
+use App\Http\Requests\BookRequest;
+use App\Http\Requests\RateRequest;
 // Model読込
 use App\Models\Book;
 use App\Models\Favorite;
+use App\Models\Author;
+use App\Models\Genre;
 
 class BookController extends Controller
 {
@@ -29,7 +34,7 @@ class BookController extends Controller
     public function indexBooks()
     {
         // 図書情報の取得
-        $books = Book::all();
+        $books = Book::orderBy('id', 'desc')->get();
 
         return view('book.books', compact('books'));
     }
@@ -42,7 +47,23 @@ class BookController extends Controller
      */
     public function indexFavoriteBooks()
     {
-        return view('book.favorite_books');
+        // お気に入り情報を全件取得
+        $favorites = Favorite::all();
+
+        // データ格納用の配列を用意
+        $array = [];
+
+        foreach ($favorites as $favorite) {
+            // お気に入りIDから図書データを取得
+            if (Book::find($favorite['book_id'])) {
+                // 配列に格納
+                $array[] = Book::find($favorite['book_id']);
+            }
+        }
+        // コレクション作成
+        $books = collect($array);
+
+        return view('book.favorite_books', compact('books'));
     }
 
     /**
@@ -109,7 +130,29 @@ class BookController extends Controller
      */
     public function createBook()
     {
-        return view('book.add_book');
+        // 著者名情報の取得
+        $authors = Author::all();
+
+        // ジャンル名情報の取得
+        $genres = Genre::all();
+
+        return view('book.add_book', compact('authors', 'genres'));
+    }
+
+    /**
+     * 図書追加処理
+     * @param object $request
+     * @return redirect
+     */
+    public function storeBook(BookRequest $request)
+    {
+        // フォーム情報の取得
+        $form = $request->only(['title', 'author_id', 'genre_id', 'content', 'memo']);
+
+        // create処理
+        Book::create($form);
+
+        return redirect('/book')->with('success', '図書を追加しました');
     }
 
     /**
@@ -120,7 +163,33 @@ class BookController extends Controller
      */
     public function editBook($book_id)
     {
-        return view('book.edit_book');
+        // 図書情報の取得
+        $book = Book::find($book_id);
+
+        // 著者情報の取得
+        $authors = Author::all();
+
+        // ジャンル情報の取得
+        $genres = Genre::all();
+
+        return view('book.edit_book', compact('book', 'authors', 'genres'));
+    }
+
+    /**
+     * 図書更新処理
+     * @param int $book_id
+     * @param object $request
+     * @return redirect
+     */
+    public function updateBook($book_id, BookRequest $request)
+    {
+        // フォーム情報の取得
+        $form = $request->only(['title', 'author_id', 'genre_id', 'content', 'memo']);
+
+        // update処理
+        Book::find($book_id)->update($form);
+        
+        return redirect("/book/detail/{$book_id}")->with('success', '図書情報を更新しました');
     }
 
     /**
@@ -129,8 +198,44 @@ class BookController extends Controller
      * @param int $book_id
      * @return view
      */
-    public function editRateBook($book_id)
+    public function createRateBook($book_id)
     {
-        return view('book.rate_book');
+        // 図書情報の取得
+        $book = Book::find($book_id);
+
+        return view('book.rate_book', compact('book'));
+    }
+
+    /**
+     * 図書評価処理
+     * @param int $book_id
+     * @param object $request
+     * @return redirect
+     */
+    public function storeRateBook($book_id, RateRequest $request)
+    {
+        // フォーム情報の取得
+        $form = $request->only('rate', 'comment');
+
+        // create処理
+        Book::update($form);
+
+        return redirect("/book/detail/{$book_id}")->with('評価を追加しました');
+    }
+
+    /**
+     * 図書削除処理
+     * @param int $book_id
+     * @return redirect
+     */
+    public function destroyBook($book_id)
+    {
+        // 削除対象の著書名を取得
+        $name = Book::find($book_id)['title'];
+
+        // delete処理
+        Book::find($book_id)->delete();
+
+        return redirect('/book')->with('success', "「{$name}」を削除しました");
     }
 }

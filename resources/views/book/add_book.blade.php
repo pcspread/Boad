@@ -10,54 +10,54 @@
         図書追加
     </div>
     <div class="add-content">
-        <form class="add-form" action="/add" method="POST">
+        <form class="add-form" action="/book/add" method="POST">
         @csrf
             <div class="add-item">
-                <lable class="add-item__name">タイトル</lable>
-                <input class="add-item__input" type="text" name="email" value="{{ old('email') }}" placeholder="入力欄" autofocus>
+                <lable class="add-item__name" for="title">タイトル</lable>
+                <input class="add-item__input" id="title" type="text" name="title" value="{{ old('title') }}" placeholder="入力欄" autofocus>
                 <p class="add-item__error">
-                @error('email')
-                    {{ $errors->first('email') }}
+                @error('title')
+                    {{ $errors->first('title') }}
                 @enderror
                 </p>
             </div>
             
             <div class="add-item">
                 <lable class="add-item__name">著者名</lable>
-                <select class="add-item__select">
-                    <option class="add-item__option" value="">キャベツ</option>
-                    <option class="add-item__option" value="">レタス</option>
-                    <option class="add-item__option" value="">ピーマン</option>
+                <select class="add-item__select" name="author_id">
+                    @foreach ($authors as $author)
+                    <option class="add-item__option" value="{{ $author['id'] }}">{{ $author['name'] }}</option>
+                    @endforeach
                 </select>
                 <p class="add-item__error">
                 </p>
             </div>
             <div class="add-item">
                 <lable class="add-item__name">ジャンル</lable>
-                <select class="add-item__select">
-                    <option class="add-item__option" value="">キャベツ</option>
-                    <option class="add-item__option" value="">レタス</option>
-                    <option class="add-item__option" value="">ピーマン</option>
+                <select class="add-item__select" name="genre_id">
+                    @foreach ($genres as $genre)
+                    <option class="add-item__option" value="{{ $genre['id'] }}">{{ $genre['name'] }}</option>
+                    @endforeach
                 </select>
                 <p class="add-item__error">
                 </p>
             </div>
             <div class="add-item">
-                <lable class="add-item__name">内容</lable>
-                <textarea class="add-item__textarea" name="" id="" maxlength="100" rows="3"></textarea>
+                <lable class="add-item__name" for="content">内容</lable>
+                <textarea class="add-item__textarea" name="content" id="content" maxlength="100" rows="3" placeholder="入力欄">{{ old('content') }}</textarea>
                 <p class="add-item__error">
-                    @error('password')
-                    {{ $errors->first('password') }}
+                    @error('content')
+                    {{ $errors->first('content') }}
                     @enderror
                 </p>
             </div>
             
             <div class="add-item">
-                <lable class="add-item__name">メモ</lable>
-                <textarea class="add-item__textarea" name="" id="" rows="5"></textarea>
+                <lable class="add-item__name" for="memo">メモ</lable>
+                <textarea class="add-item__textarea" name="memo" id="memo" rows="5" placeholder="入力欄">{{ old('memo') }}</textarea>
                 <p class="add-item__error">
-                @error('password')
-                    {{ $errors->first('password') }}
+                @error('memo')
+                    {{ $errors->first('memo') }}
                 @enderror
                 </p>
             </div>

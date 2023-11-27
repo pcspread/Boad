@@ -14,28 +14,29 @@
         図書評価
     </div>
     <div class="rate-content">
-        <form class="rate-form">
+        <form class="rate-form" action="/book/rate/{{ $book['id'] }}" method="POST">
+        @csrf
             <div class="rate-item">
                 <label class="rate-item__name">評価数</label>
                 <label for="star1" class="rate-item__star-image image1">★</label>
-                    <input class="rate-item__star star1" id="star1" type="radio" name="star" value="star1">
+                    <input class="rate-item__star star1" id="star1" type="radio" name="rate" value="1" checked="checked">
                 <label for="star2" class="rate-item__star-image image2">★</label>
-                    <input class="rate-item__star star2" id="star2" type="radio" name="star" value="star2">
+                    <input class="rate-item__star star2" id="star2" type="radio" name="rate" value="2" @if (old('rate') == 2) checked @endif>
                 <label for="star3" class="rate-item__star-image image3">★</label>
-                    <input class="rate-item__star star3" id="star3" type="radio" name="star" value="star3">
+                    <input class="rate-item__star star3" id="star3" type="radio" name="rate" value="3" @if (old('rate') == 3) checked @endif>
                 <label for="star4" class="rate-item__star-image image4">★</label>
-                    <input class="rate-item__star star4" id="star4" type="radio" name="star" value="star4">
+                    <input class="rate-item__star star4" id="star4" type="radio" name="rate" value="4" @if (old('rate') == 4) checked @endif>
                 <label for="star5" class="rate-item__star-image image5">★</label>
-                    <input class="rate-item__star star5" id="star5" type="radio" name="star" value="star5">
+                    <input class="rate-item__star star5" id="star5" type="radio" name="rate" value="5" @if (old('rate') == 5) checked @endif>
                 <p class="rate-item__error">
-                @error('comment')
-                    {{ $errors->first('comment') }}
+                @error('rate')
+                    {{ $errors->first('rate') }}
                 @enderror
                 </p>
             </div>
             <div class="rate-item">
                 <lable class="rate-item__name" for="comment">コメント</lable>
-                <textarea name="comment" id="comment" rows="3" class="rate-item__textarea"></textarea>
+                <textarea name="comment" id="comment" rows="3" class="rate-item__textarea">{{ old('comment') }}</textarea>
                 <p class="rate-item__error">
                 @error('comment')
                     {{ $errors->first('comment') }}
