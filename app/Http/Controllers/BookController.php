@@ -33,6 +33,9 @@ class BookController extends Controller
      */
     public function indexBooks()
     {
+        // ページ遷移用に値をセッションに格納
+        session()->put('page', 'list');
+
         // 図書情報の取得
         $books = Book::orderBy('id', 'desc')->get();
 
@@ -47,6 +50,9 @@ class BookController extends Controller
      */
     public function indexFavoriteBooks()
     {
+        // ページ遷移用の値をセッションに格納
+        session()->put('page', 'favorite');
+
         // お気に入り情報を全件取得
         $favorites = Favorite::all();
 
@@ -74,7 +80,25 @@ class BookController extends Controller
      */
     public function indexRankBooks()
     {
-        return view('book.rank_books');
+        // ページ遷移用の値をセッションに格納
+        session()->put('page', 'rank');
+
+        // 1位の図書情報を取得
+        $first = Book::where('rate', 5)->orderBy('id', 'desc')->get();
+        
+        // 2位の図書情報を取得
+        $second = Book::where('rate', 4)->orderBy('id', 'desc')->get();
+        
+        // 3位の図書情報を取得
+        $third = Book::where('rate', 3)->orderBy('id', 'desc')->get();
+        
+        // 4位の図書情報を取得
+        $fourth = Book::where('rate', 2)->orderBy('id', 'desc')->get();
+        
+        // 5位の図書情報を取得
+        $fifth = Book::where('rate', 1)->orderBy('id', 'desc')->get();
+
+        return view('book.rank_books', compact('first', 'second', 'third', 'fourth', 'fifth'));
     }
 
     /**
@@ -92,6 +116,27 @@ class BookController extends Controller
         $favorite = Favorite::where('book_id', $book_id)->first();
 
         return view('book.book', compact('book', 'favorite'));
+    }
+
+    /**
+     * ページ遷移処理
+     * @param void
+     * @return redirect
+     */
+    public function backPage()
+    {
+        // 詳細に訪問する前に経由したページに戻る処理
+        switch(session('page')) {
+            case 'list':
+                return redirect('/book');
+                break;
+            case 'favorite':
+                return redirect('/book/favorite');
+                break;
+            case 'rank':
+                return redirect('/book/rank');
+                break;
+        }
     }
 
     /**
@@ -203,7 +248,11 @@ class BookController extends Controller
         // 図書情報の取得
         $book = Book::find($book_id);
 
-        return view('book.rate_book', compact('book'));
+        if ($book['rate']) {
+            return view('book.edit_rate', compact('book'));
+        } else {
+            return view('book.rate_book', compact('book'));
+        }
     }
 
     /**
@@ -218,9 +267,42 @@ class BookController extends Controller
         $form = $request->only('rate', 'comment');
 
         // create処理
-        Book::update($form);
+        Book::find($book_id)->update($form);
 
-        return redirect("/book/detail/{$book_id}")->with('評価を追加しました');
+        return redirect("/book/detail/{$book_id}")->with('success', '評価を追加しました');
+    }
+
+    /**
+     * 図書評価更新処理
+     * @param int $book_id
+     * @param object $request
+     * @return redirect
+     */
+    public function updateRateBook($book_id, RateRequest $request)
+    {
+        // フォーム情報の取得
+        $form = $request->only('rate', 'comment');
+
+        // update処理
+        Book::find($book_id)->update($form);
+        
+        return redirect ("/book/detail/{$book_id}")->with('success', '評価を更新しました');
+    }
+
+    /**
+     * 図書評価削除処理
+     * @param int $book_id
+     * @return redirect
+     */
+    public function destroyRateBook($book_id)
+    {
+        // delete処理
+        Book::find($book_id)->update([
+            'rate' => 0,
+            'comment' => '',
+        ]);
+
+        return redirect("/book/detail/{$book_id}")->with('success', '評価を削除しました');
     }
 
     /**

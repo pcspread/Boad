@@ -34,6 +34,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // view表示：図書詳細ページ
     Route::get('/book/detail/{book_id}', [BookController::class, 'showBook']);
 
+    // ページ遷移処理
+    Route::get('/book/back', [BookController::class, 'backPage']);
+
     // お気に入り追加処理
     Route::post('/book/detail/{book_id}', [BookController::class, 'addFavorite']);
 
@@ -57,6 +60,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // 図書評価処理
     Route::post('/book/rate/{book_id}', [BookController::class, 'storeRateBook']);
+
+    // 図書評価更新処理
+    Route::patch('/book/rate/{book_id}', [BookController::class, 'updateRateBook']);
+
+    // 図書評価削除処理
+    Route::get('/book/rate/{book_id}/delete', [BookController::class, 'destroyRateBook']);
 
     // 図書削除処理
     Route::get('/book/delete/{book_id}', [BookController::class, 'destroyBook']);

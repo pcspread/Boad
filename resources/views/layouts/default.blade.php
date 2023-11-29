@@ -25,7 +25,7 @@
             <ul class="nav-list">
                 @if (Auth::check())
                 <li class="nav-item">
-                    <a class="nav-link" href="/book">図書一覧</a>
+                    <a class="nav-link" href="/book">図書リスト</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/book/favorite">お気に入り</a>

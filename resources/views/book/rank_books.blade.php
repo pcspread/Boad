@@ -7,82 +7,107 @@
 @section('content')
 <div class="rank-section">
     <div class="rank-top">
-        <h1 class="rank-title">ランキングリスト</h1>
+        <h1 class="rank-title">ランキング</h1>
     </div>
     <div class="rank-main">
         <div class="rank-main__block">
             <h2 class="rank-main__block-title">1位</h2>
             <div class="rank-item__group">
-                @for ($i = 0; $i < 3; $i++)
+                @foreach ($first as $item)
                 <div class="rank-item">
-                    <p class="book-title">ケンタの冒険</p>
+                    <p class="book-title">{{ $item['title'] }}</p>
                     <div class="rank-item__content">
-                        <p class="book-genre">冒険</p>
-                        <p class="book-author">新井白石作</p>
+                        <p class="book-genre">{{ $item->genre['name'] }}</p>
+                        <p class="book-author">{{ $item->author['name'] }}</p>
                     </div>
-                    <a class="book-button" href="/book/detail/1"></a>
+                    <a class="book-button" href="/book/detail/{{ $item['id'] }}"></a>
                 </div>
-                @endfor
+                @endforeach
+                @if (count($first) === 0)
+                <div class="none-rank">
+                    図書情報がございません
+                </div>
+                @endif
             </div>
         </div>
         <div class="rank-main__block">
             <h2 class="rank-main__block-title">2位</h2>
             <div class="rank-item__group">
-                @for ($i = 0; $i < 3; $i++)
+                @foreach ($second as $item)
                 <div class="rank-item">
-                    <p class="book-title">ケンタの冒険</p>
+                    <p class="book-title">{{ $item['title'] }}</p>
                     <div class="rank-item__content">
-                        <p class="book-genre">冒険</p>
-                        <p class="book-author">新井白石作</p>
+                        <p class="book-genre">{{ $item->genre['name'] }}</p>
+                        <p class="book-author">{{ $item->author['name'] }}</p>
                     </div>
-                    <a class="book-button" href="/book/detail/1"></a>
+                    <a class="book-button" href="/book/detail/{{ $item['id'] }}"></a>
                 </div>
-                @endfor
+                @endforeach
+                @if (count($second) === 0)
+                <div class="none-rank">
+                    図書情報がございません
+                </div>
+                @endif
             </div>
         </div>
         <div class="rank-main__block">
             <h2 class="rank-main__block-title">3位</h2>
             <div class="rank-item__group">
-                @for ($i = 0; $i < 3; $i++)
+                @foreach ($third as $item)
                 <div class="rank-item">
-                    <p class="book-title">ケンタの冒険</p>
+                    <p class="book-title">{{ $item['title'] }}</p>
                     <div class="rank-item__content">
-                        <p class="book-genre">冒険</p>
-                        <p class="book-author">新井白石作</p>
+                        <p class="book-genre">{{ $item->genre['name'] }}</p>
+                        <p class="book-author">{{ $item->author['name'] }}</p>
                     </div>
-                    <a class="book-button" href="/book/detail/1"></a>
+                    <a class="book-button" href="/book/detail/{{ $item['id'] }}"></a>
                 </div>
-                @endfor
+                @endforeach
+                @if (count($third) === 0)
+                <div class="none-rank">
+                    図書情報がございません
+                </div>
+                @endif
             </div>
         </div>
         <div class="rank-main__block">
             <h2 class="rank-main__block-title">4位</h2>
             <div class="rank-item__group">
-                @for ($i = 0; $i < 3; $i++)
+                @foreach($fourth as $item)
                 <div class="rank-item">
-                    <p class="book-title">ケンタの冒険</p>
+                    <p class="book-title">{{ $item['title'] }}</p>
                     <div class="rank-item__content">
-                        <p class="book-genre">冒険</p>
-                        <p class="book-author">新井白石作</p>
+                        <p class="book-genre">{{ $item->genre['name'] }}</p>
+                        <p class="book-author">{{ $item->author['name'] }}</p>
                     </div>
-                    <a class="book-button" href="/book/detail/1"></a>
+                    <a class="book-button" href="/book/detail/{{ $item['id'] }}"></a>
                 </div>
-                @endfor
+                @endforeach
+                @if (count($fourth) === 0)
+                <div class="none-rank">
+                    図書情報がございません
+                </div>
+                @endif
             </div>
         </div>
         <div class="rank-main__block">
             <h2 class="rank-main__block-title">5位</h2>
             <div class="rank-item__group">
-                @for ($i = 0; $i < 3; $i++)
+                @foreach ($fifth as $item)
                 <div class="rank-item">
-                    <p class="book-title">ケンタの冒険</p>
+                    <p class="book-title">{{ $item['title'] }}</p>
                     <div class="rank-item__content">
-                        <p class="book-genre">冒険</p>
-                        <p class="book-author">新井白石作</p>
+                        <p class="book-genre">{{ $item->genre['name'] }}</p>
+                        <p class="book-author">{{ $item->author['name'] }}</p>
                     </div>
-                    <a class="book-button" href="/book/detail/1"></a>
+                    <a class="book-button" href="/book/detail/{{ $item['id'] }}"></a>
                 </div>
-                @endfor
+                @endforeach
+                @if (count($fifth) === 0)
+                <div class="none-rank">
+                    図書情報がございません
+                </div>
+                @endif
             </div>
         </div>
     </div>
