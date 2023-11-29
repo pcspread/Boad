@@ -54,7 +54,7 @@ class BookController extends Controller
         session()->put('page', 'favorite');
 
         // お気に入り情報を全件取得
-        $favorites = Favorite::all();
+        $favorites = Favorite::orderBy('id', 'desc')->get();
 
         // データ格納用の配列を用意
         $array = [];

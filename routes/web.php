@@ -76,9 +76,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // view表示：著者一覧ページ
     Route::get('/author', [AuthorController::class, 'indexAuthors']);
+
+    // 著者追加処理
+    Route::post('/author', [AuthorController::class, 'storeAuthor']);
     
     // view表示：著者編集ページ
     Route::get('/author/{author_id}', [AuthorController::class, 'editAuthor']);
+
+    // 著者編集処理
+    Route::post('/author/{author_id}', [AuthorController::class, 'updateAuthor']);
+
+    // 著者削除処理
+    Route::delete('/author/{author_id}', [AuthorController::class, 'destroyAuthor']);
 
 /* ==================================================
 ジャンル
@@ -87,6 +96,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // view表示：ジャンル一覧ページ
     Route::get('/genre', [GenreController::class, 'indexGenres']);
 
+    // ジャンル追加処理
+    Route::post('/genre', [GenreController::class, 'storeGenre']);
+
     // view表示：ジャンル編集ページ
     Route::get('/genre/{genre_id}', [GenreController::class, 'editGenre']);
+
+    // ジャンル更新処理
+    Route::post('/genre/{genre_id}', [GenreController::class, 'updateGenre']);
+
+    // ジャンル削除処理
+    Route::delete('/genre/{genre_id}', [GenreController::class, 'destroyGenre']);
 });
