@@ -1,12 +1,12 @@
 /**
- * 文字の表示と非表示
+ * 内容を一部開閉式にする
  */
-function openWords() {
+function wordsOpen() {
     const texts = document.querySelectorAll('.book-content');
 
     texts.forEach(text => {
         const words = text.textContent;
-        let subWords = words.substring(0, 30) + '.....';
+        const subWords = words.substring(0, 30) + '.....';
 
         if (text.textContent.length > 30) {
             text.textContent = subWords;
@@ -21,5 +21,4 @@ function openWords() {
         }
     });
 }
-openWords();
-
+wordsOpen();

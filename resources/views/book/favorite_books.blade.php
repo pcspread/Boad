@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="{{ asset('css/book/favorite_books.css') }}">
 @endsection
 
+@section('js')
+<script src="{{ asset('js/book/favorite_books.js') }}" defer></script>
+@endsection
+
 @section('content')
 <div class="favorite-section">
     <div class="favorite-top">

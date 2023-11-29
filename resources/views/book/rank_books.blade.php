@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="{{ asset('css/book/rank_books.css') }}">
 @endsection
 
+@section('js')
+<script src="{{ asset('js/book/rank_books.js') }}" defer></script>
+@endsection
+
 @section('content')
 <div class="rank-section">
     <div class="rank-top">

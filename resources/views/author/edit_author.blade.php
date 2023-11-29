@@ -10,10 +10,11 @@
         著者編集
     </div>
     <div class="edit-content">
-        <form class="edit-form">
+        <form class="edit-form" action="/author/{{ $author['id'] }}" method="POST">
+        @csrf
             <div class="edit-item">
                 <lable class="edit-item__name">著者名</lable>
-                <input class="edit-item__input" type="text" name="name" value="{{ old('name') }}" placeholder="入力欄" autofocus>
+                <input class="edit-item__input" type="text" name="name" value="{{ $author['name'] }}" placeholder="入力欄" autofocus>
                 <p class="edit-item__error">
                 @error('name')
                     {{ $errors->first('name') }}
