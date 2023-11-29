@@ -7,7 +7,7 @@
 @section('content')
 <div class="favorite-section">
     <div class="favorite-top">
-        <h1 class="favorite-title">お気に入りリスト</h1>
+        <h1 class="favorite-title">お気に入り</h1>
     </div>
     <div class="favorite-main">
         @foreach ($books as $book)

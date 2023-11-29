@@ -14,7 +14,9 @@ function rateStar() {
     const radio4 = document.querySelector('.rate-item__star.star4');
     const radio5 = document.querySelector('.rate-item__star.star5');
 
-
+    /* ============================================================
+    ボタンをクリックした時の処理
+    ============================================================ */
     radio1.addEventListener('input', function () {
         if (radio1.checked) {
             star1.style.color = "#FFFF55";
@@ -62,5 +64,44 @@ function rateStar() {
             star5.style.color = "#FFFF55";
         }
     });
+
+    /* ============================================================
+    ラジオボタンが選択されている時の処理
+    ============================================================ */
+    if (radio1.checked) {
+        star1.style.color = "#FFFF55";
+        star2.style.color = "";
+        star3.style.color = "";
+        star4.style.color = "";
+        star5.style.color = "";
+    }
+    if (radio2.checked) {
+        star1.style.color = "#FFFF55";
+        star2.style.color = "#FFFF55";
+        star3.style.color = "";
+        star4.style.color = "";
+        star5.style.color = "";
+    }
+    if (radio3.checked) {
+        star1.style.color = "#FFFF55";
+        star2.style.color = "#FFFF55";
+        star3.style.color = "#FFFF55";
+        star4.style.color = "";
+        star5.style.color = "";
+    }
+    if (radio4.checked) {
+        star1.style.color = "#FFFF55";
+        star2.style.color = "#FFFF55";
+        star3.style.color = "#FFFF55";
+        star4.style.color = "#FFFF55";
+        star5.style.color = "";
+    }
+    if (radio5.checked) {
+        star1.style.color = "#FFFF55";
+        star2.style.color = "#FFFF55";
+        star3.style.color = "#FFFF55";
+        star4.style.color = "#FFFF55";
+        star5.style.color = "#FFFF55";
+    }
 }
 rateStar();

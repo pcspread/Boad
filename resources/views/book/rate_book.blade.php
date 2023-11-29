@@ -19,7 +19,7 @@
             <div class="rate-item">
                 <label class="rate-item__name">評価数</label>
                 <label for="star1" class="rate-item__star-image image1">★</label>
-                    <input class="rate-item__star star1" id="star1" type="radio" name="rate" value="1" checked="checked">
+                    <input class="rate-item__star star1" id="star1" type="radio" name="rate" value="1" @if (old('rate') == 1) checked @endif>
                 <label for="star2" class="rate-item__star-image image2">★</label>
                     <input class="rate-item__star star2" id="star2" type="radio" name="rate" value="2" @if (old('rate') == 2) checked @endif>
                 <label for="star3" class="rate-item__star-image image3">★</label>
@@ -44,7 +44,7 @@
                 </p>
             </div>
             <button class="rate-button update">評価する</button>
-            <a class="rate-button back" href="/book/detail/1">戻る</a>
+            <a class="rate-button back" href="/book/detail/{{ $book['id'] }}">戻る</a>
         </form>
     </div>
 </div>
