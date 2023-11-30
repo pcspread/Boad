@@ -23,3 +23,32 @@ function openWords() {
 }
 openWords();
 
+/**
+ * 検索機能
+ */
+function searchWord() {
+    const input = document.querySelector('.books-search__input');
+    const cards = document.querySelectorAll('.books-item');
+    const none = document.querySelector('.books-item__none');
+
+    input.addEventListener('change', function () {
+        cards.forEach(card => {
+            if (!card.children[0].textContent.includes(input.value)) {
+                if (!card.children[1].textContent.includes(input.value)) {
+                    if (!card.children[2].textContent.includes(input.value)) {
+                        if (!card.children[3].textContent.includes(input.value)) {
+                            card.remove();
+                        }
+                    }
+                }
+            }
+        });
+
+        // 図書情報が無い場合
+        const items = document.querySelectorAll('.books-item');
+        if (items.length === 0) {
+            none.textContent = '図書情報がございません。';
+        }
+    });
+}
+searchWord();
