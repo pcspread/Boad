@@ -47,7 +47,7 @@ function searchWord() {
         // 図書情報が無い場合
         const items = document.querySelectorAll('.books-item');
         if (items.length === 0) {
-            none.textContent = '図書情報がございません。';
+            none.textContent = '図書情報がございません';
         }
     });
 }

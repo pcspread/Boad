@@ -32,6 +32,9 @@
         </div>
         @endforeach
         <div class="books-item__none"></div>
+        @if (count($books) === 0)
+        <div class="books-item__empty">図書情報がございません</div>
+        @endif
     </div>
 </div>
 @endsection

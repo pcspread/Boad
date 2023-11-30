@@ -24,5 +24,10 @@
         </div>
         @endforeach
     </div>
+    @if (count($books) === 0)
+    <div class="favorite-item__none">
+        図書情報がございません
+    </div>
+    @endif
 </div>
 @endsection
