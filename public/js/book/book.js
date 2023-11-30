@@ -7,22 +7,22 @@ function convertRate() {
 
     if (rate) {
         if (rateStr == 1) {
-            rate.textContent = '★';
+            rate.textContent = '★☆☆☆☆';
             rate.style.color = "#5555FF";
         }
 
         if (rateStr == 2) {
-            rate.textContent = '★★';
+            rate.textContent = '★★☆☆☆';
             rate.style.color = '#5555FF';
         }
 
         if (rateStr == 3) {
-            rate.textContent = '★★★';
+            rate.textContent = '★★★☆☆';
             rate.style.color = '#5555FF';
         }
 
         if (rateStr == 4) {
-            rate.textContent = '★★★★';
+            rate.textContent = '★★★★☆';
             rate.style.color = '#5555FF';
         }
 
