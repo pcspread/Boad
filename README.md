@@ -81,7 +81,7 @@ GitHub<br />
 ## その他
 ■ ログイン用ダミーデータ<br />
 ・1件<br />
-・メールアドレス：test1@test.com
+・メールアドレス：test1@test.com<br />
 ・パスワード　　：test1111<br />
 
 ■ 図書ダミーデータ<br />
